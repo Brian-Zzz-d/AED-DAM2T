@@ -33,10 +33,12 @@ public class VentanaConductores extends javax.swing.JFrame {
     private JButton btnEliminar;
     private JButton btnLimpiar;
 
+    
+
     public VentanaConductores() {
         setTitle("Gestión de Conductores");
         setSize(850, 550);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout(10, 10));
 
