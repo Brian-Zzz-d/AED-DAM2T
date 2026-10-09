@@ -10,9 +10,11 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -24,29 +26,46 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public VentanaPrincipal() {
         setTitle("Sistema de Gestión Logística");
-        setSize(420, 360);
+        setSize(480, 420);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(5, 1, 10, 10));
+        setResizable(false);
+        setLayout(new BorderLayout(0, 15));
 
         JLabel lblTitulo = new JLabel("PANEL DE CONTROL", SwingConstants.CENTER);
-        lblTitulo.setFont(new Font("Arial", Font.BOLD, 18));
-        add(lblTitulo);
+        lblTitulo.setFont(new Font("Arial", Font.BOLD, 20));
+        lblTitulo.setBorder(new EmptyBorder(20, 0, 10, 0));
+        add(lblTitulo, BorderLayout.NORTH);
+
+        JPanel panelBotones = new JPanel(new GridLayout(5, 1, 0, 12));
+        panelBotones.setBorder(new EmptyBorder(0, 40, 25, 40));
 
         JButton btnMunicipios = new JButton("Gestión de Municipios");
-        JButton btnConductores = new JButton("Gestión de Conductores (Teléfonos y Asignaciones)");
+        JButton btnConductores = new JButton("Gestión de Conductores");
         JButton btnVehiculos = new JButton("Gestión de Vehículos");
         JButton btnPaquetes = new JButton("Gestión de Paquetes");
+        JButton btnSalir = new JButton("Salir");
+
+        Font fuenteBoton = new Font("Arial", Font.PLAIN, 14);
+        btnMunicipios.setFont(fuenteBoton);
+        btnConductores.setFont(fuenteBoton);
+        btnVehiculos.setFont(fuenteBoton);
+        btnPaquetes.setFont(fuenteBoton);
+        btnSalir.setFont(fuenteBoton);
 
         btnMunicipios.addActionListener(e -> new VentanaMunicipios().setVisible(true));
         btnConductores.addActionListener(e -> new VentanaConductores().setVisible(true));
         btnVehiculos.addActionListener(e -> new VentanaVehiculos().setVisible(true));
         btnPaquetes.addActionListener(e -> new VentanaPaquetes().setVisible(true));
+        btnSalir.addActionListener(e -> System.exit(0));
 
-        add(btnMunicipios);
-        add(btnConductores);
-        add(btnVehiculos);
-        add(btnPaquetes);
+        panelBotones.add(btnMunicipios);
+        panelBotones.add(btnConductores);
+        panelBotones.add(btnVehiculos);
+        panelBotones.add(btnPaquetes);
+        panelBotones.add(btnSalir);
+
+        add(panelBotones, BorderLayout.CENTER);
     }
 
     /**
