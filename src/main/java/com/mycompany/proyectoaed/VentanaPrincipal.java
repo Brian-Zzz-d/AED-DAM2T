@@ -24,32 +24,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public VentanaPrincipal() {
         setTitle("Sistema de Gestión Logística");
-        setSize(450, 400);
+        setSize(420, 360);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(6, 1, 10, 10));
+        setLayout(new GridLayout(5, 1, 10, 10));
 
         JLabel lblTitulo = new JLabel("PANEL DE CONTROL", SwingConstants.CENTER);
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 18));
         add(lblTitulo);
 
-        JButton btnConductores = new JButton("Gestión de Conductores");
+        JButton btnMunicipios = new JButton("Gestión de Municipios");
+        JButton btnConductores = new JButton("Gestión de Conductores (Teléfonos y Asignaciones)");
         JButton btnVehiculos = new JButton("Gestión de Vehículos");
         JButton btnPaquetes = new JButton("Gestión de Paquetes");
-        JButton btnMunicipios = new JButton("Gestión de Municipios");
-        JButton btnSalir = new JButton("Salir");
 
+        btnMunicipios.addActionListener(e -> new VentanaMunicipios().setVisible(true));
         btnConductores.addActionListener(e -> new VentanaConductores().setVisible(true));
-        //btnVehiculos.addActionListener(e -> new VentanaVehiculos().setVisible(true));
-        //btnPaquetes.addActionListener(e -> new VentanaPaquetes().setVisible(true));
-        //btnMunicipios.addActionListener(e -> new VentanaMunicipios().setVisible(true));
-        btnSalir.addActionListener(e -> System.exit(0));
+        btnVehiculos.addActionListener(e -> new VentanaVehiculos().setVisible(true));
+        btnPaquetes.addActionListener(e -> new VentanaPaquetes().setVisible(true));
 
+        add(btnMunicipios);
         add(btnConductores);
         add(btnVehiculos);
         add(btnPaquetes);
-        add(btnMunicipios);
-        add(btnSalir);
     }
 
     /**
